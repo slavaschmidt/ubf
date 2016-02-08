@@ -40,7 +40,7 @@ class UbfDecoderTest extends org.scalatest.FunSpec {
       assert(UbfDecoder.decode("#$") == Right(UbfList()))
     }
     val input = Seq("1234$", "-4321$", "\"foo\"$", "\"\\\\foo\\\"\\\"\"$", "'foo'$", "'\\\'foo\\\''$", "{}$",
-      "{{{}}}$", "{1 \"two\" {3} 'four'}$", "# 1 & 2 & 3 & $", "# $")
+      "{{{}}}$", "{1 \"two\" {3} 'four'}$", "# 1 & 2 & 3 & $", "# $", """# "a" & "b" & "c" & "d" & $""")
 
     input foreach { str =>
       it("should encode and decode preserving structure with " + str) {
