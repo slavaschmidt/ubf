@@ -33,7 +33,8 @@ class UbfDecoderTest extends org.scalatest.FunSpec {
     it("should parse valid tuples") {
       assert(UbfDecoder.decode("{}$") == Right(UbfTuple()))
       assert(UbfDecoder.decode("{{{}}}$") == Right(UbfTuple(UbfTuple(UbfTuple()))))
-      assert(UbfDecoder.decode("{1 \"two\" {3} 'four'}$") == Right(UbfTuple(UbfInteger(1), UbfString("two"), UbfTuple(UbfInteger(3)), UbfAtom("four"))))
+      assert(UbfDecoder.decode("{1 \"two\" {3} 'four'}$") ==
+        Right(UbfTuple(UbfInteger(1), UbfString("two"), UbfTuple(UbfInteger(3)), UbfAtom("four"))))
     }
     it("should parse valid lists") {
       assert(UbfDecoder.decode("# 1 & 2 & 3 & $") == Right(UbfList(UbfInteger(1), UbfInteger(2), UbfInteger(3))))
